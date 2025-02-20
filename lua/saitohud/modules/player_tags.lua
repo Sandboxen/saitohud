@@ -42,6 +42,9 @@ local function DistanceString(distance, unit)
 end
 
 local function NameTagsPaint()
+	if GetGlobalBool("wojenna", false) then
+		return
+	end
 	local refPos = SaitoHUD.GetRefPos()
 	local all = drawNameTags:GetBool()
 	local alwaysFriends = alwaysDrawFriendTags:GetBool()
@@ -83,8 +86,8 @@ local function NameTagsPaint()
 					draw.SimpleText(text, "DefaultBold", screenPos.x, screenPos.y,
 									color, 1, ALIGN_TOP)
 				else
-					draw.SimpleText(text, "DefaultSmallDropShadow", screenPos.x + 1,
-									screenPos.y + 1, color, 1, ALIGN_TOP)
+					draw.SimpleTextOutlined(text, "DefaultBold", screenPos.x + 1,
+									screenPos.y + 1, color, 1, ALIGN_TOP, 1, shadowColor)
 				end
 			else
 				if bold then
